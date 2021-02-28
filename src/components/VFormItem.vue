@@ -67,7 +67,10 @@ export default {
     };
   },
   methods: {
-    saveItem() {},
+    saveItem() {
+      this.$store.dispatch('addItem', this.form);
+      this.$emit('close');
+    },
   },
 };
 </script>

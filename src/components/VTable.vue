@@ -13,7 +13,7 @@
         <tbody>
           <tr v-for="(item, index) in items" :key="index">
             <td v-for="header in headers" :key="`${index}${header.title}`">
-              {{ item[header.key] }}
+              {{ viewData(item, header.key) }}
             </td>
           </tr>
         </tbody>
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import firebase from 'firebase/app';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'VTable',
@@ -63,26 +63,33 @@ export default {
           title: 'Действия',
         },
       ],
-      items: [],
     };
   },
   created() {
-    this.getItem();
+    this.$store.dispatch('fetchItems');
+  },
+  computed: {
+    ...mapGetters({
+      items: 'getItems',
+    }),
   },
   methods: {
-    async getItem() {
-      try {
-        await firebase
-          .firestore()
-          .collection('items')
-          .get()
-          .then((items) => {
-            items.forEach((item) => {
-              this.items.push(item.data());
-            });
-          });
-      } catch (e) {
-        console.log(e);
+    viewData(item, key) {
+      switch (key) {
+        case 'dataArrived':
+          return item[key]
+            .split('-')
+            .reverse()
+            .join('.');
+        case 'price':
+          return `${item[key]} р.`;
+        case 'weight':
+        case 'weightBox':
+          return `${item[key]} кг.`;
+        case 'totalBoxes':
+          return `${item[key]} шт.`;
+        default:
+          return item[key];
       }
     },
   },
