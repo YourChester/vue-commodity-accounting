@@ -50,6 +50,24 @@ export default new Vuex.Store({
       } catch(e) {
         console.log(e);
       }
+    },
+    async editItem({ dispatch }, product) {
+      try {
+        const id = product.id
+        delete product.id
+
+        await firebase
+            .firestore()
+            .collection('items')
+            .doc(id)
+            .set(product)
+            .then(() => {
+              alert("Продукт успешно обновлен")
+            });
+        dispatch('fetchItems')
+      } catch(e) {
+        console.log(e);
+      }
     }
   },
   modules: {

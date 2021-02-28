@@ -12,21 +12,38 @@
         </thead>
         <tbody>
           <tr v-for="(item, index) in items" :key="index">
-            <td v-for="header in headers" :key="`${index}${header.title}`">
-              {{ viewData(item, header.key) }}
-            </td>
+            <template v-for="header in headers">
+              <td
+                v-if="header.key !== 'actions'"
+                :key="`${index}${header.title}`"
+              >
+                {{ viewData(item, header.key) }}
+              </td>
+              <td v-else :key="`${index}${header.title}`">
+                <div class="actions">
+                  <button class="edit_button" @click="editItem(item)">
+                    <i class="fas fa-pen"></i>
+                  </button>
+                </div>
+              </td>
+            </template>
           </tr>
         </tbody>
       </table>
     </div>
+    <v-form-item v-if="isViewForm" :item="selectItem" @close="closeForm" />
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
+import VFormItem from '@/components/VFormItem.vue';
 
 export default {
   name: 'VTable',
+  components: {
+    VFormItem,
+  },
   data() {
     return {
       headers: [
@@ -63,6 +80,8 @@ export default {
           title: 'Действия',
         },
       ],
+      isViewForm: false,
+      selectItem: null,
     };
   },
   created() {
@@ -92,6 +111,14 @@ export default {
           return item[key];
       }
     },
+    editItem(item) {
+      this.selectItem = item;
+      this.isViewForm = true;
+    },
+    closeForm() {
+      this.isViewForm = false;
+      this.selectItem = null;
+    },
   },
 };
 </script>
@@ -114,6 +141,26 @@ export default {
         padding: 10px;
         font-size: 14px;
         font-weight: 600;
+
+        .actions {
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+        }
+      }
+
+      .edit_button {
+        border: none;
+        background: none;
+
+        i {
+          color: $dark-gray;
+          font-size: 16px;
+
+          &:hover {
+            color: $light-green;
+          }
+        }
       }
     }
   }

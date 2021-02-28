@@ -53,6 +53,7 @@
 <script>
 export default {
   name: 'VFormItem',
+  props: ['item'],
   data() {
     return {
       form: {
@@ -66,10 +67,21 @@ export default {
       },
     };
   },
+  mounted() {
+    this.form = {
+      ...this.form,
+      ...this.item,
+    };
+  },
   methods: {
     saveItem() {
-      this.$store.dispatch('addItem', this.form);
-      this.$emit('close');
+      if (this.form?.id) {
+        this.$store.dispatch('editItem', this.form);
+        this.$emit('close');
+      } else {
+        this.$store.dispatch('addItem', this.form);
+        this.$emit('close');
+      }
     },
   },
 };
