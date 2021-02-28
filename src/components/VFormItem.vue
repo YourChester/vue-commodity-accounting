@@ -4,7 +4,7 @@
       <div class="form">
         <div class="form__header">
           <div class="header__title">
-            Добавление товара
+            {{ form.id ? 'Обновление товара' : 'Добавление товара' }}
           </div>
           <div class="header__button">
             <i class="fas fa-times" @click="$emit('close')"></i>
@@ -42,7 +42,7 @@
         </div>
         <div class="form__footer">
           <button class="button" @click="saveItem">
-            Добавить товар
+            {{ form.id ? 'Обновить товар' : 'Добавить товар' }}
           </button>
         </div>
       </div>
@@ -77,11 +77,10 @@ export default {
     saveItem() {
       if (this.form?.id) {
         this.$store.dispatch('editItem', this.form);
-        this.$emit('close');
       } else {
         this.$store.dispatch('addItem', this.form);
-        this.$emit('close');
       }
+      this.$emit('close');
     },
   },
 };
