@@ -4,18 +4,25 @@
       Товаро учет
     </div>
     <div class="header__actions">
-      <button class="button__add-item" @click="addNewItem">
+      <button class="button" @click="isViewForm = true">
         Добавить товар
       </button>
     </div>
+    <v-form-item v-if="isViewForm" @close="isViewForm = false" />
   </div>
 </template>
 
 <script>
+import VFormItem from './VFormItem.vue';
 export default {
   name: 'v-header',
-  methods: {
-    addNewItem() {},
+  components: {
+    VFormItem,
+  },
+  data() {
+    return {
+      isViewForm: false,
+    };
   },
 };
 </script>
@@ -37,7 +44,7 @@ export default {
   }
 
   &__actions {
-    .button__add-item {
+    .button {
       padding: 10px 20px;
       border: none;
       border-radius: 6px;
