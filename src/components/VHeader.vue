@@ -39,7 +39,7 @@ export default {
 
   &__title {
     font-size: 28px;
-    font-weight: 600;
+    font-weight: 500;
     color: white;
   }
 
@@ -47,11 +47,18 @@ export default {
     .button {
       padding: 10px 20px;
       border: none;
-      border-radius: 6px;
-      background-color: $light-green;
+      border-radius: 14px;
+      background: white;
       font-size: 16px;
-      font-weight: 600;
-      color: white;
+      font-weight: 500;
+      color: black;
+      transition: 0.3s ease-in-out;
+
+      &:hover {
+        background: $light-green;
+        color: white;
+        transition: 0.3s ease-in-out;
+      }
     }
   }
 }

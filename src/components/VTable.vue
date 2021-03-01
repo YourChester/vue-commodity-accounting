@@ -162,10 +162,10 @@ export default {
         width: 100%;
         padding: 10px 20px;
         padding-left: 40px;
-        border: 2px solid black;
-        border-radius: 20px;
+        border: 1px solid black;
+        border-radius: 14px;
         font-size: 16px;
-        font-weight: 600;
+        font-weight: 400;
         outline: none;
 
         &:focus,
@@ -199,18 +199,21 @@ export default {
         font-size: 16px;
         text-align: left;
         border-bottom: 1px solid black;
+        font-weight: 500;
       }
 
       tr {
+        transition: 0.2s;
         &:hover {
-          background-color: rgba($color: black, $alpha: 0.2);
+          background-color: rgba($color: black, $alpha: 0.1);
+          transition: 0.2s;
         }
       }
 
       td {
         padding: 10px;
         font-size: 14px;
-        font-weight: 600;
+        font-weight: 400;
 
         .actions {
           display: flex;
@@ -226,9 +229,11 @@ export default {
         i {
           color: $dark-gray;
           font-size: 16px;
+          transition: 0.3s;
 
           &:hover {
             color: $light-green;
+            transition: 0.3s;
           }
         }
       }
