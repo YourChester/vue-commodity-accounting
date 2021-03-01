@@ -68,6 +68,24 @@ export default new Vuex.Store({
       } catch(e) {
         console.log(e);
       }
+    },
+    async deleteItem({ dispatch }, product) {
+      try {
+        const id = product.id
+        if (confirm('Вы точно хотите удалить?')) {
+          await firebase
+              .firestore()
+              .collection('items')
+              .doc(id)
+              .delete()
+              .then(() => {
+                alert("Продукт успешно обновлен")
+              });
+          dispatch('fetchItems')
+        }
+      } catch(e) {
+        console.log(e);
+      }
     }
   },
   modules: {
