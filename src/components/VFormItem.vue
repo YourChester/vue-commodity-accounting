@@ -97,6 +97,7 @@ export default {
   flex-direction: column;
   background-color: white;
 
+
   &__substrate {
     position: absolute;
     top: 0;
@@ -117,19 +118,20 @@ export default {
     flex-direction: column;
     padding: 10px;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 500;
 
     input {
       margin-top: 5px;
       border-radius: 6px;
       padding: 7px;
-      border: 2px solid black;
+      border: 1px solid black;
       outline: none;
-      font-weight: 600;
+      font-weight: 400;
 
       &:focus,
       &:active {
-        border: 2px solid $light-green;
+        border: 1px solid $light-green;
+        transition: 0.25s ease-in-out;
       }
     }
   }
@@ -153,6 +155,11 @@ export default {
           cursor: pointer;
           font-size: 16px;
           color: white;
+          transition: 0.3s;
+          &:hover {
+            color: $light-green;
+            transition: 0.3s;
+          }
         }
       }
     }
@@ -168,16 +175,23 @@ export default {
     align-items: center;
     padding: 0 10px;
     height: 50px;
-    border-top: 1px solid black;
+    border-top: 0.1px solid black;
 
     .button {
       padding: 10px 20px;
       border: none;
-      border-radius: 6px;
+      border-radius: 14px;
       background-color: $light-green;
       font-size: 16px;
-      font-weight: 600;
+      font-weight: 500;
       color: white;
+      transition: 0.3s ease-in-out;
+
+      &:hover {
+        background: $dark-green;
+        color: white;
+        transition: 0.3s ease-in-out;
+      }
     }
   }
 }
