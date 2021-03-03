@@ -2,6 +2,7 @@
   <div class="list">
     <div class="list__filters">
       <div class="search_field">
+        <span></span>
         <input v-model="searchText" type="text" placeholder="Поиск" />
       </div>
     </div>
@@ -155,17 +156,16 @@ export default {
     padding: 20px;
 
     .search_field {
-      position: relative;
       width: 30%;
 
       input {
         width: 100%;
         padding: 10px 20px;
         padding-left: 40px;
-        border: 2px solid black;
-        border-radius: 20px;
+        border: 1px solid black;
+        border-radius: 14px;
         font-size: 16px;
-        font-weight: 600;
+        font-weight: 400;
         outline: none;
 
         &:focus,
@@ -174,17 +174,20 @@ export default {
         }
       }
 
-      &:before {
-        content: ' ';
-        position: absolute;
-        display: block;
-        top: 12px;
-        left: 16px;
-        width: 16px;
-        height: 16px;
-        background-image: url('../assets/svg/search.svg');
-        opacity: 0.4;
-        z-index: 100;
+      span {
+        position: relative;
+
+        &:before {
+          content: ' ';
+          position: absolute;
+          display: block;
+          top: 1px;
+          left: 16px;
+          width: 16px;
+          height: 16px;
+          background-image: url('../assets/svg/search.svg');
+          opacity: 0.4;
+        }
       }
     }
   }
@@ -199,18 +202,21 @@ export default {
         font-size: 16px;
         text-align: left;
         border-bottom: 1px solid black;
+        font-weight: 500;
       }
 
       tr {
+        transition: 0.2s;
         &:hover {
-          background-color: rgba($color: black, $alpha: 0.2);
+          background-color: rgba($color: black, $alpha: 0.1);
+          transition: 0.2s;
         }
       }
 
       td {
         padding: 10px;
         font-size: 14px;
-        font-weight: 600;
+        font-weight: 400;
 
         .actions {
           display: flex;
@@ -226,9 +232,11 @@ export default {
         i {
           color: $dark-gray;
           font-size: 16px;
+          transition: 0.3s;
 
           &:hover {
             color: $light-green;
+            transition: 0.3s;
           }
         }
       }
