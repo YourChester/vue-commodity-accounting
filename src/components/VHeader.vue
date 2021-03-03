@@ -48,14 +48,14 @@ export default {
       padding: 10px 20px;
       border: none;
       border-radius: 14px;
-      background: $light-green;
+      background: $dark-green;
       font-size: 16px;
       font-weight: 500;
       color: white;
       transition: 0.3s ease-in-out;
 
       &:hover {
-        background: $dark-green;
+        background: $light-green;
         color: white;
         transition: 0.3s ease-in-out;
       }

@@ -97,7 +97,6 @@ export default {
   flex-direction: column;
   background-color: white;
 
-
   &__substrate {
     position: absolute;
     top: 0;
@@ -181,14 +180,14 @@ export default {
       padding: 10px 20px;
       border: none;
       border-radius: 14px;
-      background-color: $light-green;
+      background-color: $dark-green;
       font-size: 16px;
       font-weight: 500;
       color: white;
       transition: 0.3s ease-in-out;
 
       &:hover {
-        background: $dark-green;
+        background: $light-green;
         color: white;
         transition: 0.3s ease-in-out;
       }

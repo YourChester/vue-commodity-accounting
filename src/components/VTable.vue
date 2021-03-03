@@ -2,6 +2,7 @@
   <div class="list">
     <div class="list__filters">
       <div class="search_field">
+        <span></span>
         <input v-model="searchText" type="text" placeholder="Поиск" />
       </div>
     </div>
@@ -155,7 +156,6 @@ export default {
     padding: 20px;
 
     .search_field {
-      position: relative;
       width: 30%;
 
       input {
@@ -174,17 +174,20 @@ export default {
         }
       }
 
-      &:before {
-        content: ' ';
-        position: absolute;
-        display: block;
-        top: 12px;
-        left: 16px;
-        width: 16px;
-        height: 16px;
-        background-image: url('../assets/svg/search.svg');
-        opacity: 0.4;
-        z-index: 100;
+      span {
+        position: relative;
+
+        &:before {
+          content: ' ';
+          position: absolute;
+          display: block;
+          top: 1px;
+          left: 16px;
+          width: 16px;
+          height: 16px;
+          background-image: url('../assets/svg/search.svg');
+          opacity: 0.4;
+        }
       }
     }
   }
