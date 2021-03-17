@@ -28,14 +28,6 @@
             <input type="number" v-model="form.weight" />
           </label>
           <label class="form__field">
-            Количество ящиков
-            <input type="number" v-model="form.totalBoxes" />
-          </label>
-          <label class="form__field">
-            Вес тары, кг
-            <input type="number" v-model="form.weightBox" />
-          </label>
-          <label class="form__field">
             Дата привоза
             <input type="date" v-model="form.dataArrived" />
           </label>
@@ -61,8 +53,6 @@ export default {
         name: '',
         price: '',
         weight: '',
-        totalBoxes: '',
-        weightBox: '',
         dataArrived: '',
       },
     };
@@ -88,14 +78,15 @@ export default {
 
 <style lang="scss">
 .form {
-  position: absolute;
-  top: calc(50% - 325px);
+  position: fixed;
+  top: 10%;
   left: calc(50% - 250px);
-  width: 500px;
-  height: 650px;
+  width: 35%;
+  height: 70%;
   display: flex;
   flex-direction: column;
   background-color: white;
+  z-index: 2;
 
   &__substrate {
     position: absolute;

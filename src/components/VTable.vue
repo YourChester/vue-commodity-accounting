@@ -75,14 +75,6 @@ export default {
           title: 'Цена за кг',
         },
         {
-          key: 'totalBoxes',
-          title: 'Количество ящиков',
-        },
-        {
-          key: 'weightBox',
-          title: 'Вес тары, кг',
-        },
-        {
           key: 'dataArrived',
           title: 'Дата привоза',
         },
@@ -127,10 +119,6 @@ export default {
         case 'price':
           return `${item[key]} р.`;
         case 'weight':
-        case 'weightBox':
-          return `${item[key]} кг.`;
-        case 'totalBoxes':
-          return `${item[key]} шт.`;
         default:
           return item[key];
       }
@@ -167,10 +155,13 @@ export default {
         font-size: 16px;
         font-weight: 400;
         outline: none;
+        transition: 0.3s;
 
         &:focus,
         &:active {
           border-color: $light-green;
+          transition: 0.3s;
+
         }
       }
 
