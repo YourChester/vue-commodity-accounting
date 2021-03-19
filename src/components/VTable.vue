@@ -5,12 +5,17 @@
         <span></span>
         <input v-model="searchText" type="text" placeholder="Поиск" />
       </div>
+      <div class="actions">
+        <button class="button" @click="isViewForm = true">
+          Добавить товар
+        </button>
+      </div>
     </div>
     <div class="list__table">
       <table>
         <thead>
           <tr>
-            <th v-for="header in headers" :key="header.key">
+            <th v-for="header in headers" :key="header.key" :class="header.class">
               {{ header.title }}
             </th>
           </tr>
@@ -21,10 +26,11 @@
               <td
                 v-if="header.key !== 'actions'"
                 :key="`${index}${header.title}`"
+                :class="header.class"
               >
                 {{ viewData(item, header.key) }}
               </td>
-              <td v-else :key="`${index}${header.title}`">
+              <td v-else :key="`${index}${header.title}`" :class="header.class">
                 <div class="actions">
                   <button class="action_btn edit_btn" @click="editItem(item)">
                     <i class="fas fa-pen"></i>
@@ -93,6 +99,7 @@ export default {
         {
           key: 'actions',
           title: 'Действия',
+          class: 'text-right'
         },
       ],
       isViewForm: false,
@@ -160,18 +167,21 @@ export default {
 <style lang="scss">
 .list {
   &__filters {
-    padding: 20px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
     .search_field {
-      width: 30%;
+      width: 20%;
 
       input {
         width: 100%;
         padding: 10px 20px;
         padding-left: 40px;
-        border: 1px solid black;
+        border: 2px solid gray;
         border-radius: 14px;
-        font-size: 16px;
+        font-size: 14px;
         font-weight: 400;
         outline: none;
 
@@ -199,20 +209,39 @@ export default {
     }
   }
 
+  .actions {
+    .button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 14px;
+      background: $dark-green;
+      font-size: 16px;
+      font-weight: 500;
+      color: white;
+      transition: 0.3s ease-in-out;
+
+      &:hover {
+        background: $light-green;
+        color: white;
+        transition: 0.3s ease-in-out;
+      }
+    }
+  }
+
   &__table {
     table {
       width: 100%;
       border-collapse: collapse;
 
       th {
-        padding: 10px;
-        font-size: 16px;
+        padding: 8px;
+        font-size: 14px;
         text-align: left;
         border-bottom: 1px solid black;
-        font-weight: 500;
+        font-weight: 600;
       }
 
-      tr {
+      tbody > tr {
         transition: 0.2s;
         &:hover {
           background-color: rgba($color: black, $alpha: 0.1);
@@ -221,13 +250,13 @@ export default {
       }
 
       td {
-        padding: 10px;
+        padding: 8px;
         font-size: 14px;
         font-weight: 400;
 
         .actions {
           display: flex;
-          justify-content: flex-start;
+          justify-content: flex-end;
           align-items: center;
         }
       }
