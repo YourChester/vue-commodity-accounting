@@ -27,14 +27,14 @@
             Вес кг.
             <input type="number" v-model="form.weight" />
           </label>
-          <label class="form__field">
+          <!-- <label class="form__field">
             Количество ящиков
             <input type="number" v-model="form.totalBoxes" />
           </label>
           <label class="form__field">
             Вес тары, кг
             <input type="number" v-model="form.weightBox" />
-          </label>
+          </label> -->
           <label class="form__field">
             Дата привоза
             <input type="date" v-model="form.dataArrived" />
@@ -76,11 +76,11 @@ export default {
   methods: {
     saveItem() {
       if (this.form?.id) {
-        this.$store.dispatch('editItem', this.form);
+        this.$store.dispatch('editItem', this.form)
       } else {
-        this.$store.dispatch('addItem', this.form);
+        this.$store.dispatch('addItem', this.form)
       }
-      this.$emit('close');
+      this.$emit('close')
     },
   },
 };
@@ -89,16 +89,16 @@ export default {
 <style lang="scss">
 .form {
   position: absolute;
-  top: calc(50% - 325px);
+  top: calc(50% - 250px);
   left: calc(50% - 250px);
   width: 500px;
-  height: 650px;
+  height: 500px;
   display: flex;
   flex-direction: column;
   background-color: white;
 
   &__substrate {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;

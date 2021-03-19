@@ -67,20 +67,24 @@ export default {
           title: 'Наименование товара',
         },
         {
-          key: 'weight',
-          title: 'Вес, кг',
+          key: 'count',
+          title: 'Количество',
         },
         {
           key: 'price',
           title: 'Цена за кг',
         },
+        // {
+        //   key: 'totalBoxes',
+        //   title: 'Количество ящиков',
+        // },
+        // {
+        //   key: 'weightBox',
+        //   title: 'Вес тары, кг',
+        // },
         {
-          key: 'totalBoxes',
-          title: 'Количество ящиков',
-        },
-        {
-          key: 'weightBox',
-          title: 'Вес тары, кг',
+          key: 'totalPrice',
+          title: 'Стоимость всего',
         },
         {
           key: 'dataArrived',
@@ -126,11 +130,13 @@ export default {
             .join('.');
         case 'price':
           return `${item[key]} р.`;
-        case 'weight':
-        case 'weightBox':
+        case 'count':
+        // case 'weightBox':
           return `${item[key]} кг.`;
-        case 'totalBoxes':
-          return `${item[key]} шт.`;
+        // case 'totalBoxes':
+        //  return `${item[key]} шт.`;
+        case 'totalPrice':
+          return `${item.count * item.price} р.`
         default:
           return item[key];
       }
@@ -142,6 +148,7 @@ export default {
     closeForm() {
       this.isViewForm = false;
       this.selectItem = null;
+      document.body.classList.remove('active__modal')
     },
     deleteItem(item) {
       this.$store.dispatch('deleteItem', item);
