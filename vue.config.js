@@ -1,4 +1,7 @@
 module.exports = {
+  devServer: {
+    port: process.env.PORT,
+  },
   css: {
     loaderOptions: {
       sass: {
